@@ -14,6 +14,12 @@
     <name>kafka</name>
     <description>kafka</description>
     <url/>
+    <modules>
+        <module>orders</module>
+        <module>payment</module>
+        <module>notifications</module>
+        <module>shipping</module>
+    </modules>
     <licenses>
         <license/>
     </licenses>

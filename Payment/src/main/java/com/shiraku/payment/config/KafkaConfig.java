@@ -1,4 +1,5 @@
 package com.shiraku.payment.config;
+import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -17,6 +18,11 @@ import java.util.Map;
 public class KafkaConfig {
     private static final String KAFKA_SERVER = "kafka:9092";
     private static final String GROUP_ID = "payment-group";
+
+    @Bean
+    public NewTopic payedOrdersTopic() {
+        return new NewTopic("payed_orders", 3, (short) 1);
+    }
 
     @Bean
     public Map<String, Object> producerConfigs() {
@@ -56,6 +62,7 @@ public class KafkaConfig {
     public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
+        factory.setConcurrency(3); // Количество потоков для параллельной обработки
         return factory;
     }
 }
