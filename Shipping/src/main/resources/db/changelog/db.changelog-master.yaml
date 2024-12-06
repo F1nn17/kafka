@@ -18,6 +18,11 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
+                  name: payment_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+              - column:
                   name: shipping_address
                   type: VARCHAR(255)
                   constraints:

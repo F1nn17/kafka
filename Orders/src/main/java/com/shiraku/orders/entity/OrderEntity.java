@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.UUID;
 
@@ -11,15 +12,17 @@ import java.util.UUID;
 @Table(name = "orders")
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class OrderEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @Column(name = "customer_name", nullable = false)
     private String customerName;
 
     @Column(name = "status", nullable = false)
-    private String status;
+    private Status status;
+
+    public OrderEntity() {
+        id = UUID.randomUUID();
+    }
 }

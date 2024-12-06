@@ -1,10 +1,14 @@
 package com.shiraku.shipping.entity;
 
+import com.shiraku.shipping.dto.ProductDTO;
+import com.shiraku.shipping.dto.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -20,9 +24,12 @@ public class ShipmentEntity {
     @Column(name = "order_id", nullable = false)
     private UUID orderId;
 
+    @Column(name = "payment_id", nullable = false)
+    private UUID paymentId;
+
     @Column(name = "shipping_address", nullable = false)
     private String shippingAddress;
 
     @Column(name = "status", nullable = false)
-    private String status;
+    private Status status;
 }

@@ -12,10 +12,8 @@ import java.util.UUID;
 @Table(name = "payments")
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class PaymentEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @Column(name = "order_id", nullable = false)
@@ -25,5 +23,9 @@ public class PaymentEntity {
     private BigDecimal amount;
 
     @Column(name = "status", nullable = false)
-    private String status;
+    private Status status;
+
+    public PaymentEntity() {
+        id = UUID.randomUUID();
+    }
 }
