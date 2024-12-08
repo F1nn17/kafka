@@ -3,8 +3,6 @@ package com.shiraku.orders.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import java.util.UUID;
 
@@ -14,15 +12,22 @@ import java.util.UUID;
 @AllArgsConstructor
 public class OrderEntity {
     @Id
+    @GeneratedValue
     private UUID id;
+
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
 
     @Column(name = "customer_name", nullable = false)
     private String customerName;
 
     @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     public OrderEntity() {
-        id = UUID.randomUUID();
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
     }
 }

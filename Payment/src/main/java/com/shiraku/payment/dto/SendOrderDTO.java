@@ -10,7 +10,6 @@ import java.util.UUID;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class SendOrderDTO {
     private UUID orderId;
     private UUID paymentId;

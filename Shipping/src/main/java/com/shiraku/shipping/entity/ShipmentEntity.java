@@ -1,14 +1,11 @@
 package com.shiraku.shipping.entity;
 
-import com.shiraku.shipping.dto.ProductDTO;
 import com.shiraku.shipping.dto.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -31,5 +28,6 @@ public class ShipmentEntity {
     private String shippingAddress;
 
     @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Status status;
 }

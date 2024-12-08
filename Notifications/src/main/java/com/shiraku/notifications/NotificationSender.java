@@ -1,7 +1,6 @@
 package com.shiraku.notifications;
 
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.TypeMap;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;

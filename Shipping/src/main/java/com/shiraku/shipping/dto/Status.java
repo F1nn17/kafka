@@ -1,5 +1,6 @@
 package com.shiraku.shipping.dto;
 
 public enum Status {
-    SHIPPED
+    SHIPPED,
+    PAID_ORDER;
 }

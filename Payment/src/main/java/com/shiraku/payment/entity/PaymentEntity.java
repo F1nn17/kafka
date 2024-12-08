@@ -3,7 +3,6 @@ package com.shiraku.payment.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -14,6 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class PaymentEntity {
     @Id
+    @GeneratedValue
     private UUID id;
 
     @Column(name = "order_id", nullable = false)
@@ -23,9 +23,12 @@ public class PaymentEntity {
     private BigDecimal amount;
 
     @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     public PaymentEntity() {
-        id = UUID.randomUUID();
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
     }
 }
